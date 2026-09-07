@@ -25,11 +25,18 @@ assets/site.js     menú móvil, acuarela del inicio
 assets/img/        fotografías del jardín
 serve.js           servidor estático sin dependencias
 test/              comprobaciones con node:test
+sitemap.xml        generados por build.js
+robots.txt
 ```
 
-Para cambiar textos, edita `content/*.js` y ejecuta `npm run build`. Los archivos HTML generados se versionan para que el sitio pueda publicarse tal cual (por ejemplo en GitHub Pages).
+Para cambiar textos, edita `content/*.js` y ejecuta `npm run build`. La URL pública (canonical, Open Graph, sitemap y datos estructurados) se toma de la variable `SITE_URL`; por defecto es `https://casanovam.github.io/waldorfavila/`:
+
+```sh
+SITE_URL=https://www.tudominio.es/ npm run build
+``` Los archivos HTML generados se versionan para que el sitio pueda publicarse tal cual (por ejemplo en GitHub Pages).
 
 ## Créditos
 
 Fotografías cortesía de [Ávila con Niños](https://xn--avilaconnios-jhb.com/jardin-de-infancia-waldorf-de-avila/).
+Dirección: Calle de la Encina, 25, Chalet 19, 05004 Ávila · Horario: lunes a viernes 8:15 – 14:00 (ampliable hasta las 15:00).
 Contacto del jardín: waldorfavila@gmail.com · Instagram [@waldorfavila](https://www.instagram.com/waldorfavila/) · [Facebook](https://www.facebook.com/jardindeinfanciawaldorfavila/).

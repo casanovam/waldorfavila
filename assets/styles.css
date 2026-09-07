@@ -4,9 +4,9 @@
   --ground-2: #f1e5dc;      /* deeper wash for alternate sections */
   --paper: #fffaf6;         /* card surface */
   --ink: #2f221d;
-  --ink-2: #6b5548;
+  --ink-2: #5a463b;
   --line: #e2d1c5;
-  --red: #b5432e;           /* the silk canopy */
+  --red: #a83d29;           /* the silk canopy */
   --red-deep: #8f3222;
   --wood: #d7a25e;
   --wood-soft: #f0d9b3;
@@ -26,7 +26,7 @@
     --ground-2: #2d211d;
     --paper: #332621;
     --ink: #f3e8e0;
-    --ink-2: #c9b4a6;
+    --ink-2: #dccabf;
     --line: #4a3831;
     --red: #e0684f;
     --red-deep: #c85338;
@@ -44,7 +44,7 @@
   --ground-2: #2d211d;
   --paper: #332621;
   --ink: #f3e8e0;
-  --ink-2: #c9b4a6;
+  --ink-2: #dccabf;
   --line: #4a3831;
   --red: #e0684f;
   --red-deep: #c85338;
@@ -251,6 +251,21 @@ section { padding-block: clamp(3.5rem, 6vw, 6.5rem); }
 @media (max-width: 760px) { .contact .wrap { grid-template-columns: 1fr; } .contact-list div { grid-template-columns: 1fr; gap: 0.15rem; } }
 
 /* Footer */
+/* Reviews */
+.reviews { background: var(--ground-2); }
+.rating { color: var(--ink-2); font-weight: 500; }
+.stars { color: var(--wood); letter-spacing: 0.05em; }
+.review-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.review { margin: 0; padding: 1.4rem 1.4rem 1.3rem; border-radius: 18px; background: var(--paper); border: 1px solid var(--line); display: grid; gap: 0.9rem; align-content: space-between; }
+.review blockquote { margin: 0; }
+.review blockquote p { font-family: var(--display); font-variation-settings: "opsz" 24, "SOFT" 40; font-size: 1.12rem; line-height: 1.45; }
+.review blockquote p::before { content: "“"; color: var(--red); }
+.review blockquote p::after { content: "”"; color: var(--red); }
+.review figcaption { font-size: 0.95rem; color: var(--ink-2); font-weight: 700; }
+.note.small { font-size: 0.9rem; color: var(--ink-2); margin-top: 1.2rem; }
+@media (max-width: 900px) { .review-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .review-grid { grid-template-columns: 1fr; } }
+
 .site-foot { padding: 1.6rem 0 2.2rem; font-size: 0.9rem; color: var(--ink-2); }
 .site-foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.6rem 2rem; }
 
