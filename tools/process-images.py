@@ -41,11 +41,11 @@ for name in NAMES:
         save(out, os.path.join(ROOT, f'{name}-{w}.jpg'), q=74 if w <= 960 else 72)
     print(name, im.size)
 
-# Share card 1200x630 from the outdoor photo
-im = ImageOps.exif_transpose(Image.open(os.path.join(SRC, 'waldorf-1.jpg'))).convert('RGB')
+# Share card 1200x630 from the canopy playroom photo
+im = ImageOps.exif_transpose(Image.open(os.path.join(SRC, 'waldorf-7.jpg'))).convert('RGB')
 im = grade(im)
 w, h = im.size; target = 1200 / 630
-nh = int(w / target); y = max(0, (h - nh) // 2 - h // 12)
+nh = int(w / target); y = max(0, (h - nh) // 2)
 im = im.crop((0, y, w, y + nh)).resize((1200, 630), Image.LANCZOS).filter(ImageFilter.UnsharpMask(radius=1.1, percent=60, threshold=2))
 save(im, os.path.join(ROOT, 'share.jpg'), q=82)
 print('share.jpg', im.size)

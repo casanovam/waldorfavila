@@ -69,7 +69,7 @@ function render(t, base, alternates) {
     alternateName: 'Waldorf Ávila',
     description: t.description,
     url: pageUrl,
-    image: [SITE_URL + 'assets/img/share.jpg', SITE_URL + 'assets/img/waldorf-1-1280.jpg'],
+    image: [SITE_URL + 'assets/img/share.jpg', SITE_URL + 'assets/img/waldorf-7-1280.jpg'],
     email: t.contact.email,
     address: { '@type': 'PostalAddress', streetAddress: a.street, postalCode: a.postal, addressLocality: a.city, addressRegion: a.region, addressCountry: a.country },
     geo: { '@type': 'GeoCoordinates', latitude: GEO.lat, longitude: GEO.lng },
@@ -115,7 +115,7 @@ function render(t, base, alternates) {
   <meta name="geo.position" content="${GEO.lat};${GEO.lng}">
   ${alt}
   <link rel="alternate" hreflang="x-default" href="${SITE_URL}">
-  <link rel="preload" as="image" href="${img('waldorf-1-960.jpg')}" imagesrcset="${[640, 960, 1280, 1600].map((w) => `${img(`waldorf-1-${w}.jpg`)} ${w}w`).join(', ')}" imagesizes="(max-width: 860px) calc(100vw - 2.5rem), (max-width: 1180px) 56vw, 660px">
+  <link rel="preload" as="image" href="${img('waldorf-7-960.jpg')}" imagesrcset="${[640, 960, 1280, 1600].map((w) => `${img(`waldorf-7-${w}.jpg`)} ${w}w`).join(', ')}" imagesizes="(max-width: 860px) calc(100vw - 2.5rem), (max-width: 1180px) 56vw, 660px">
   <script type="application/ld+json">${JSON.stringify(schema).replace(/</g, '\\u003c')}</script>
   <link rel="icon" href="${base}assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" as="font" type="font/woff2" href="${base}assets/fonts/fraunces-normal-400-600.woff2" crossorigin>
@@ -155,7 +155,7 @@ function render(t, base, alternates) {
           <div class="facts">${facts}</div>
         </div>
         <figure class="hero-figure">
-          ${photo('waldorf-1.jpg', t.hero.imgAlt, '(max-width: 860px) calc(100vw - 2.5rem), (max-width: 1180px) 56vw, 660px', 'fetchpriority="high" decoding="async"')}
+          ${photo('waldorf-7.jpg', t.hero.imgAlt, '(max-width: 860px) calc(100vw - 2.5rem), (max-width: 1180px) 56vw, 660px', 'fetchpriority="high" decoding="async"')}
           <figcaption>${esc(t.hero.caption)}</figcaption>
         </figure>
       </div>
@@ -246,6 +246,7 @@ function render(t, base, alternates) {
     </section>
 
     <section class="contact" id="contacto">
+      <canvas class="wash" aria-hidden="true"></canvas>
       <div class="wrap">
         <div>
           <p class="eyebrow">${esc(t.contact.eyebrow)}</p>

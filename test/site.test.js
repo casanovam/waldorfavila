@@ -130,10 +130,20 @@ test('photos use srcset with resized files and lazy loading below the hero', () 
     const imgs = html.match(/<img [^>]*waldorf-\d[^>]*>/g);
     assert.strictEqual(imgs.length, 5);
     for (const tag of imgs) assert.match(tag, /srcset="[^"]*-640\.jpg 640w, [^"]*-960\.jpg 960w, [^"]*-1280\.jpg 1280w/);
-    assert.match(imgs[0], /waldorf-1-1600\.jpg 1600w/);
+    assert.match(imgs[0], /waldorf-7-1600\.jpg 1600w/);
     assert.match(imgs[0], /fetchpriority="high"/);
     assert.strictEqual(imgs.slice(1).filter((t) => /loading="lazy"/.test(t)).length, 4);
     assert.match(html, /<meta property="og:image" content="https:\/\/[^"]+share\.jpg">/);
     assert.match(html, /<meta property="og:image:height" content="630">/);
+  }
+});
+
+test('single light theme: no dark-mode overrides and the hero is the canopy photo', () => {
+  const css = fs.readFileSync(path.join(ROOT, 'assets', 'styles.css'), 'utf8');
+  assert.doesNotMatch(css, /prefers-color-scheme|data-theme/);
+  assert.match(css, /color-scheme: light/);
+  for (const html of Object.values(pages)) {
+    assert.match(html, /<section class="hero"[\s\S]*?waldorf-7-960\.jpg/);
+    assert.strictEqual((html.match(/<canvas class="wash"/g) || []).length, 2);
   }
 });

@@ -23,8 +23,8 @@ module.exports = {
       'Un jardín de infancia Waldorf para niños y niñas de 18 meses a 5 años. Juego libre, materiales naturales, arte cada día y mucha naturaleza, en un ambiente cálido y hogareño.',
     cta: 'Ven a conocernos',
     cta2: 'Cómo educamos',
-    imgAlt: 'Cuatro niños con ropa de abrigo cruzan el patio del jardín una mañana de invierno en Ávila.',
-    caption: 'El patio del jardín, una mañana de invierno',
+    imgAlt: 'Rincón de juego del jardín: una carpa de seda roja sobre una cocinita de madera, con una mesita y un mantel rosa.',
+    caption: 'El rincón de juego, bajo la carpa de seda',
     facts: [
       ['18 m – 5 años', 'edades'],
       ['8:15 – 14:00', 'horario, ampliable hasta las 15:00'],
@@ -43,8 +43,8 @@ module.exports = {
     title: 'Cinco ideas que sostienen cada mañana',
     items: [
       {
-        img: 'waldorf-7.jpg',
-        alt: 'Carpa de seda roja sobre una cocinita de madera',
+        img: 'waldorf-5.jpg',
+        alt: 'Un niño riega el huerto con una regadera blanca, imitando el trabajo de los adultos',
         title: 'Juego libre e imitación',
         text:
           'El juego libre es la actividad natural del niño y el centro del día. Los juguetes son sencillos, de madera y de tela, para que la imaginación ponga el resto. El adulto es el modelo que los niños imitan en sus gestos, su forma de hablar y de tratar a los demás.',
@@ -64,8 +64,8 @@ module.exports = {
           'El día es como una gran respiración: momentos de expansión y de recogimiento que se alternan. La acuarela, el pan, la cera o la lana tienen un alto valor pedagógico y llegan cada semana.',
       },
       {
-        img: 'waldorf-5.jpg',
-        alt: 'Un niño riega el huerto con una regadera blanca',
+        img: 'waldorf-1.jpg',
+        alt: 'Niños con ropa de abrigo cruzan el patio del jardín una mañana de invierno en Ávila',
         title: 'Naturaleza a diario',
         text:
           'Huerto, tierra, charcos y estaciones. El contacto directo con la naturaleza regala a los niños un mundo de aprendizaje y salud, haga el tiempo que haga.',

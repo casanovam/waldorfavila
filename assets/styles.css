@@ -1,4 +1,5 @@
-/* Jardín de Infancia Waldorf de Ávila */
+/* Jardín de Infancia Waldorf de Ávila
+   One deliberate theme: the rose plaster, terracotta and ochre of the classroom. No dark variant. */
 :root {
   --ground: #f8f1ec;        /* rose plaster, from the classroom walls */
   --ground-2: #f1e5dc;      /* deeper wash for alternate sections */
@@ -13,10 +14,7 @@
   --ivy: #55703f;
   --ivy-soft: #d3dfc3;      /* gathering-in phase */
   --wash: #f2b58a;          /* the wet-on-wet orange */
-  --contact-accent: #e2b06c;
   --btn-fg: #fff8f3;          /* text on the primary button */
-  /* fixed cream set: the reviews section stays light in both themes */
-  --cream: #f8f1ec; --cream-2: #fffaf6; --cream-ink: #2f221d; --cream-ink-2: #5a463b; --cream-line: #e2d1c5;
   --shadow: 0 18px 40px -24px rgba(79, 40, 26, 0.45);
   --shadow-hover: 0 24px 48px -24px rgba(79, 40, 26, 0.55);
   --radius: 22px;
@@ -25,48 +23,6 @@
   --measure: 62ch;
   --header-h: 4rem;
   color-scheme: light;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --ground: #241a17;
-    --ground-2: #2d211d;
-    --paper: #332621;
-    --ink: #f3e8e0;
-    --ink-2: #dccabf;
-    --line: #4a3831;
-    --red: #e0684f;
-    --red-deep: #c85338;
-    --wood: #e2b06c;
-    --wood-soft: #5a4322;
-    --ivy: #9cb582;
-    --ivy-soft: #2f4426;
-    --wash: #c9714f;
-    --contact-accent: #8f3222;
-    --btn-fg: #2a1410;
-    --shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.7);
-    --shadow-hover: 0 24px 48px -24px rgba(0, 0, 0, 0.8);
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --ground: #241a17;
-  --ground-2: #2d211d;
-  --paper: #332621;
-  --ink: #f3e8e0;
-  --ink-2: #dccabf;
-  --line: #4a3831;
-  --red: #e0684f;
-  --red-deep: #c85338;
-  --wood: #e2b06c;
-  --wood-soft: #5a4322;
-  --ivy: #9cb582;
-  --ivy-soft: #2f4426;
-  --wash: #c9714f;
-  --contact-accent: #8f3222;
-  --btn-fg: #2a1410;
-  --shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.7);
-  --shadow-hover: 0 24px 48px -24px rgba(0, 0, 0, 0.8);
-  color-scheme: dark;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -217,8 +173,6 @@ section { padding-block: clamp(3rem, 5vw, 5.5rem); scroll-margin-top: calc(var(-
 .breath .out .phase::before { background: var(--wood); }
 .breath .in .phase { color: var(--ivy); }
 .breath .in .phase::before { background: var(--ivy); }
-:root[data-theme="dark"] .breath .out .phase { color: var(--wood); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .breath .out .phase { color: var(--wood); } }
 .breath .when { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; color: var(--ink-2); }
 .breath h3 { font-size: 1.2rem; }
 .breath p { font-size: 1rem; line-height: 1.45; }
@@ -273,23 +227,19 @@ section { padding-block: clamp(3rem, 5vw, 5.5rem); scroll-margin-top: calc(var(-
 .cta-band .btn-ghost { color: var(--ground); border-color: color-mix(in srgb, var(--ground) 40%, transparent); background: transparent; }
 .cta-band .btn-ghost:hover { border-color: var(--ground); }
 
-/* Reviews: fixed cream in both themes */
-.reviews { background: var(--cream); color: var(--cream-ink); }
-.reviews .eyebrow { color: #a83d29; }
-.reviews .rating, .reviews .note { color: var(--cream-ink-2); }
-.reviews a { color: #a83d29; }
+/* Reviews */
+.reviews { background: var(--ground); }
+.reviews .rating, .reviews .note { color: var(--ink-2); }
 .rating { font-weight: 500; }
-.stars { color: #d7a25e; letter-spacing: 0.05em; }
+.stars { color: var(--wood); letter-spacing: 0.05em; }
 .review-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-.review { margin: 0; padding: 1.4rem 1.4rem 1.3rem; border-radius: 18px; background: var(--cream-2); border: 1px solid var(--cream-line); display: grid; gap: 0.9rem; align-content: space-between; transition: transform 0.2s ease, box-shadow 0.2s ease; }
-@media (hover: hover) { .review:hover { transform: translateY(-3px); box-shadow: 0 24px 48px -24px rgba(79, 40, 26, 0.45); } }
+.review { margin: 0; padding: 1.4rem 1.4rem 1.3rem; border-radius: 18px; background: var(--paper); border: 1px solid var(--line); display: grid; gap: 0.9rem; align-content: space-between; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+@media (hover: hover) { .review:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); } }
 .review blockquote { margin: 0; }
 .review blockquote p { font-family: var(--display); font-variation-settings: "opsz" 24, "SOFT" 40; font-size: 1.12rem; line-height: 1.45; }
-.review blockquote p::before { content: "“"; color: #a83d29; }
-.review blockquote p::after { content: "”"; color: #a83d29; }
-.review figcaption { font-size: 0.95rem; color: var(--cream-ink-2); font-weight: 700; }
-.reviews .cta-band { background: #2f221d; color: #f8f1ec; }
-.reviews .cta-band .btn-ghost { color: #f8f1ec; border-color: rgba(248, 241, 236, 0.4); }
+.review blockquote p::before { content: "“"; color: var(--red); }
+.review blockquote p::after { content: "”"; color: var(--red); }
+.review figcaption { font-size: 0.95rem; color: var(--ink-2); font-weight: 700; }
 .note.small { font-size: 0.9rem; margin-top: 1.2rem; }
 @media (max-width: 900px) { .review-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .review-grid { grid-template-columns: 1fr; } }
@@ -304,27 +254,25 @@ section { padding-block: clamp(3rem, 5vw, 5.5rem); scroll-margin-top: calc(var(-
 .faq details[open] summary::after { content: "–"; }
 .faq details p { padding: 0 0 1.1rem; color: var(--ink-2); }
 
-/* Contact */
-.contact { background: var(--ink); color: var(--ground); }
-.contact .eyebrow { color: var(--contact-accent); }
-.contact .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 4vw, 4rem); align-items: start; }
-.contact p { color: color-mix(in srgb, var(--ground) 82%, transparent); }
+/* Contact: the peach wash returns, so the page bookends warm */
+.contact { position: relative; overflow: hidden; background: var(--ground-2); border-top: 1px solid var(--line); }
+.contact .wash { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.contact .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 4vw, 4rem); align-items: start; }
+.contact p { color: var(--ink-2); }
 .contact-actions { display: grid; gap: 0.7rem; margin-top: 1.4rem; max-width: 26rem; }
 .contact-actions .btn { font-size: 1.05rem; padding: 0.95rem 1.4rem; }
-.contact-actions .btn-ghost { color: var(--ground); border-color: color-mix(in srgb, var(--ground) 35%, transparent); background: transparent; }
-.contact-actions .btn-ghost:hover { border-color: var(--ground); }
+.contact-actions .btn-ghost { background: var(--paper); }
 .contact-info { display: grid; gap: 1rem; }
-.contact-info .map { border-radius: var(--radius); overflow: hidden; aspect-ratio: 16 / 10; background: color-mix(in srgb, var(--ground) 12%, transparent); box-shadow: var(--shadow); }
-.contact-info .map iframe { width: 100%; height: 100%; border: 0; display: block; filter: saturate(0.85); }
+.contact-info .map { border-radius: var(--radius); overflow: hidden; aspect-ratio: 16 / 10; background: var(--paper); box-shadow: var(--shadow); border: 1px solid var(--line); }
+.contact-info .map iframe { width: 100%; height: 100%; border: 0; display: block; filter: saturate(0.85) sepia(0.08); }
 .contact-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 2rem; margin: 0; }
 .contact-meta div { display: grid; gap: 0.2rem; }
-.contact-meta dt { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; color: var(--contact-accent); }
+.contact-meta dt { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; color: var(--red); }
 .contact-meta dd { margin: 0; font-variant-numeric: tabular-nums; }
-.contact-meta a { color: var(--ground); }
 @media (max-width: 760px) { .contact .wrap { grid-template-columns: 1fr; } .contact-meta { grid-template-columns: 1fr; } }
 
 /* Footer */
-.site-foot { padding: 1.6rem 0 2.2rem; font-size: 0.9rem; color: var(--ink-2); }
+.site-foot { padding: 1.6rem 0 2.2rem; font-size: 0.9rem; color: var(--ink-2); background: var(--ground-2); }
 .site-foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.6rem 2rem; }
 
 /* Reveal: elements below the fold fade up once, 300ms */

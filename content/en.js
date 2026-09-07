@@ -23,8 +23,8 @@ module.exports = {
       'A Waldorf kindergarten for children from 18 months to 5 years. Free play, natural materials, art every day and plenty of time outdoors, in a warm, homely atmosphere.',
     cta: 'Come and visit',
     cta2: 'How we teach',
-    imgAlt: 'Four children in winter clothes cross the kindergarten yard on a winter morning in Ávila.',
-    caption: 'The kindergarten yard on a winter morning',
+    imgAlt: 'The kindergarten play corner: a red silk canopy over a wooden play kitchen, with a small table and a pink cloth.',
+    caption: 'The play corner, under the silk canopy',
     facts: [
       ['18 m – 5 yrs', 'ages'],
       ['8:15 – 14:00', 'hours, optional extension to 15:00'],
@@ -43,8 +43,8 @@ module.exports = {
     title: 'Five ideas behind every morning',
     items: [
       {
-        img: 'waldorf-7.jpg',
-        alt: 'Red silk canopy over a wooden play kitchen',
+        img: 'waldorf-5.jpg',
+        alt: 'A child waters the vegetable patch with a white watering can, imitating the adults’ work',
         title: 'Free play and imitation',
         text:
           'Free play is a child’s natural activity and the heart of the day. Toys are simple, made of wood and cloth, so imagination does the rest. The adult is the model children imitate in gesture, speech and the way they treat others.',
@@ -64,8 +64,8 @@ module.exports = {
           'The day is like one long breath: moments of expansion and moments of gathering in, taking turns. Watercolour, bread, beeswax and wool carry real educational value and come around every week.',
       },
       {
-        img: 'waldorf-5.jpg',
-        alt: 'A child watering the vegetable patch with a white watering can',
+        img: 'waldorf-1.jpg',
+        alt: 'Children in winter clothes cross the kindergarten yard on a winter morning in Ávila',
         title: 'Nature every day',
         text:
           'Vegetable patch, soil, puddles and seasons. Direct contact with nature gives children a whole world of learning and health, whatever the weather.',
