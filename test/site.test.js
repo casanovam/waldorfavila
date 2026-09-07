@@ -38,7 +38,7 @@ test('key content is present in each language', () => {
   assert.match(pages.es, /18 meses a 5 años/);
   assert.match(pages.en, /Waldorf versus traditional preschool/);
   assert.match(pages.en, /18 months to 5 years/);
-  for (const html of Object.values(pages)) assert.match(html, /waldorfavila@gmail\.com/);
+  for (const html of Object.values(pages)) assert.match(html, /jardinwaldorflaencina@gmail\.com/);
 });
 
 test('every referenced local asset exists', () => {
@@ -126,7 +126,7 @@ test('SEO: canonical, Open Graph image, description and schema.org Preschool', (
 test('calls to action repeat after the comparison and after the reviews', () => {
   for (const html of Object.values(pages)) {
     assert.strictEqual((html.match(/class="cta-band/g) || []).length, 2);
-    assert.match(html, /class="contact-actions"[\s\S]*mailto:waldorfavila@gmail\.com/);
+    assert.match(html, /class="contact-actions"[\s\S]*mailto:jardinwaldorflaencina@gmail\.com/);
     assert.match(html, /<iframe src="https:\/\/www\.google\.com\/maps\?q=40\.67[^"]*output=embed"[^>]*loading="lazy"/);
   }
 });
