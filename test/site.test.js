@@ -65,7 +65,8 @@ test('local server serves both pages', async () => {
   const server = require('../serve');
   await new Promise((r) => (server.listening ? r() : server.once('listening', r)));
   try {
-    for (const p of ['/', '/en/', '/assets/styles.css']) {
+    const css = fs.readdirSync(path.join(DIST, 'assets')).find((f) => /^styles\.[0-9a-f]{8}\.css$/.test(f));
+    for (const p of ['/', '/en/', `/assets/${css}`]) {
       const res = await fetch(`http://localhost:5199${p}`);
       assert.strictEqual(res.status, 200, p);
     }
