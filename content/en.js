@@ -155,7 +155,7 @@ module.exports = {
     eyebrow: 'Contact',
     title: 'Come and visit',
     text: 'Beatriz, who runs the kindergarten, will answer your questions and show you around. Write to us by email or on social media.',
-    email: 'waldorfavila@gmail.com',
+    email: 'jardinwaldorflaencina@gmail.com',
     labels: { email: 'Email', instagram: 'Instagram', facebook: 'Facebook' },
     instagram: 'https://www.instagram.com/waldorfavila/',
     instagramLabel: '@waldorfavila',

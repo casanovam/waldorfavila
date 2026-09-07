@@ -155,7 +155,7 @@ module.exports = {
     eyebrow: 'Contacto',
     title: 'Ven a conocernos',
     text: 'Beatriz, responsable del jardín, te atenderá y te enseñará el espacio. Escríbenos por correo o por redes sociales.',
-    email: 'waldorfavila@gmail.com',
+    email: 'jardinwaldorflaencina@gmail.com',
     labels: { email: 'Correo', instagram: 'Instagram', facebook: 'Facebook' },
     instagram: 'https://www.instagram.com/waldorfavila/',
     instagramLabel: '@waldorfavila',

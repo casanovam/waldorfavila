@@ -64,4 +64,4 @@ Lighthouse 12 en local (7 sept 2026): móvil 90 / 100 / 100 / 100, escritorio 10
 
 Fotografías cortesía de [Ávila con Niños](https://xn--avilaconnios-jhb.com/jardin-de-infancia-waldorf-de-avila/).
 Dirección: Calle de la Encina, 25, Chalet 19, 05004 Ávila · Horario: lunes a viernes 8:15 – 14:00 (ampliable hasta las 15:00).
-Contacto del jardín: waldorfavila@gmail.com · Instagram [@waldorfavila](https://www.instagram.com/waldorfavila/) · [Facebook](https://www.facebook.com/jardindeinfanciawaldorfavila/).
+Contacto del jardín: jardinwaldorflaencina@gmail.com · Instagram [@waldorfavila](https://www.instagram.com/waldorfavila/) · [Facebook](https://www.facebook.com/jardindeinfanciawaldorfavila/).
