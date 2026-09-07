@@ -51,7 +51,12 @@ test('every referenced local asset exists', () => {
 });
 
 test('dist contains sitemap, robots and headers but not the photo originals', () => {
-  for (const f of ['sitemap.xml', 'robots.txt', '_headers', 'assets/styles.css', 'assets/fonts.css']) assert.ok(fs.existsSync(path.join(DIST, f)), f);
+  for (const f of ['sitemap.xml', 'robots.txt', '_headers']) assert.ok(fs.existsSync(path.join(DIST, f)), f);
+  for (const html of Object.values(pages)) {
+    assert.match(html, /assets\/styles\.[0-9a-f]{8}\.css/, 'stylesheet must be fingerprinted');
+    assert.match(html, /assets\/site\.[0-9a-f]{8}\.js/, 'script must be fingerprinted');
+  }
+  assert.ok(!fs.existsSync(path.join(DIST, 'assets', 'styles.css')), 'unhashed stylesheet must not ship');
   assert.ok(!fs.existsSync(path.join(DIST, 'assets', 'img', 'src')), 'originals must not ship');
 });
 

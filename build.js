@@ -2,6 +2,7 @@
 // Renders the bilingual site from content/*.js into index.html (es) and en/index.html (en).
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 
 const ROOT = __dirname;
 const DIST = path.join(ROOT, 'dist');
@@ -15,7 +16,7 @@ const LANGS = [
 
 const esc = (s) => String(s).replace(/&(?!\w+;)/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-function render(t, base, alternates) {
+function render(t, base, alternates, assetNames) {
   const img = (f) => `${base}assets/img/${f}`;
   const pageUrl = SITE_URL + (t.lang === 'es' ? '' : 'en/');
   // Responsive photo: 640/960/1280/1600 copies made by tools/process-images.py (4:3, never upscaled)
@@ -120,8 +121,8 @@ function render(t, base, alternates) {
   <link rel="icon" href="${base}assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" as="font" type="font/woff2" href="${base}assets/fonts/fraunces-normal-400-600.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="${base}assets/fonts/alegreya-sans-normal-400.woff2" crossorigin>
-  <link rel="stylesheet" href="${base}assets/fonts.css">
-  <link rel="stylesheet" href="${base}assets/styles.css">
+  <link rel="stylesheet" href="${base}assets/${assetNames['fonts.css']}">
+  <link rel="stylesheet" href="${base}assets/${assetNames['styles.css']}">
 </head>
 <body>
   <header class="site-head">
@@ -280,7 +281,7 @@ function render(t, base, alternates) {
     </div>
   </footer>
 
-  <script src="${base}assets/site.js" defer></script>
+  <script src="${base}assets/${assetNames['site.js']}" defer></script>
 </body>
 </html>
 `;
@@ -295,8 +296,22 @@ function copyAssets() {
   fs.cpSync(from, to, { recursive: true, filter: (src) => !src.includes(path.join('img', 'src')) });
 }
 
+// Content-hash the stylesheet and script so a redeploy always busts browser and edge caches
+function fingerprint() {
+  const names = {};
+  for (const f of ['styles.css', 'fonts.css', 'site.js']) {
+    const p = path.join(DIST, 'assets', f);
+    const hash = crypto.createHash('md5').update(fs.readFileSync(p)).digest('hex').slice(0, 8);
+    const hashed = f.replace(/\.(css|js)$/, `.${hash}.$1`);
+    fs.renameSync(p, path.join(DIST, 'assets', hashed));
+    names[f] = hashed;
+  }
+  return names;
+}
+
 function build() {
   copyAssets();
+  const assetNames = fingerprint();
   const alternates = [
     { lang: 'es', href: './' },
     { lang: 'en', href: 'en/' },
@@ -304,7 +319,7 @@ function build() {
   for (const l of LANGS) {
     const t = require(path.join(ROOT, 'content', `${l.file}.js`));
     const alts = alternates.map((a) => ({ ...a, href: l.base + a.href, abs: SITE_URL + (a.lang === 'es' ? '' : 'en/') }));
-    const html = render(t, l.base, alts);
+    const html = render(t, l.base, alts, assetNames);
     const out = path.join(DIST, l.out);
     fs.mkdirSync(path.dirname(out), { recursive: true });
     fs.writeFileSync(out, html);
@@ -328,7 +343,13 @@ ${urls.map((u) => `  <url>
 `;
   fs.writeFileSync(path.join(DIST, 'sitemap.xml'), sitemap);
   fs.writeFileSync(path.join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${SITE_URL}sitemap.xml\n`);
-  fs.writeFileSync(path.join(DIST, '_headers'), `/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n`);
+  fs.writeFileSync(path.join(DIST, '_headers'), [
+    '/assets/*.css', '  Cache-Control: public, max-age=31536000, immutable',
+    '/assets/*.js', '  Cache-Control: public, max-age=31536000, immutable',
+    '/assets/fonts/*', '  Cache-Control: public, max-age=31536000, immutable',
+    '/assets/img/*', '  Cache-Control: public, max-age=86400, stale-while-revalidate=604800',
+    '/*', '  Cache-Control: public, max-age=0, must-revalidate', '  X-Content-Type-Options: nosniff', '  Referrer-Policy: strict-origin-when-cross-origin',
+  ].join('\n') + '\n');
   console.log('built sitemap.xml, robots.txt, _headers → dist/');
 }
 
