@@ -32,4 +32,4 @@ Para cambiar textos, edita `content/*.js` y ejecuta `npm run build`. Los archivo
 ## Créditos
 
 Fotografías cortesía de [Ávila con Niños](https://xn--avilaconnios-jhb.com/jardin-de-infancia-waldorf-de-avila/).
-Contacto del jardín: waldorfavila@gmail.com · 648 755 577 · 647 643 204.
+Contacto del jardín: waldorfavila@gmail.com · Instagram [@waldorfavila](https://www.instagram.com/waldorfavila/) · [Facebook](https://www.facebook.com/jardindeinfanciawaldorfavila/).

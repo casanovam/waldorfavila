@@ -63,3 +63,14 @@ test('local server serves both pages', async () => {
     server.close();
   }
 });
+
+test('contact lists email, Instagram and Facebook only, no phone numbers', () => {
+  for (const html of Object.values(pages)) {
+    assert.match(html, /instagram\.com\/waldorfavila/);
+    assert.match(html, /facebook\.com\/jardindeinfanciawaldorfavila/);
+    assert.doesNotMatch(html, /tel:/);
+    assert.doesNotMatch(html, /648 ?755 ?577|647 ?643 ?204/);
+    assert.doesNotMatch(html, /Ingrid|Aldara/);
+    assert.match(html, /Beatriz/);
+  }
+});

@@ -40,7 +40,6 @@ function render(t, base, alternates) {
   const faq = t.practical.items
     .map(([q, a], i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`)
     .join('\n        ');
-  const phones = t.contact.phones.map((p) => `<a href="tel:+34${p.replace(/\D/g, '').replace(/^34/, '')}">${esc(p)}</a>`).join(' · ');
   const alt = alternates.map((a) => `<link rel="alternate" hreflang="${a.lang}" href="${a.href}">`).join('\n  ');
 
   return `<!doctype html>
@@ -174,10 +173,8 @@ function render(t, base, alternates) {
         </div>
         <dl class="contact-list">
           <div><dt>${esc(t.contact.labels.email)}</dt><dd><a href="mailto:${t.contact.email}">${t.contact.email}</a></dd></div>
-          <div><dt>${esc(t.contact.labels.phone)}</dt><dd>${phones}</dd></div>
-          <div><dt>${esc(t.contact.labels.web)}</dt><dd><a href="${t.contact.web}" rel="noopener">${esc(t.contact.webLabel)}</a></dd></div>
-          <div><dt>${esc(t.contact.labels.facebook)}</dt><dd>${esc(t.contact.facebook)}</dd></div>
-          <div><dt>${esc(t.contact.labels.place)}</dt><dd>${esc(t.contact.place)}</dd></div>
+          <div><dt>${esc(t.contact.labels.instagram)}</dt><dd><a href="${t.contact.instagram}" rel="noopener">${esc(t.contact.instagramLabel)}</a></dd></div>
+          <div><dt>${esc(t.contact.labels.facebook)}</dt><dd><a href="${t.contact.facebook}" rel="noopener">${esc(t.contact.facebookLabel)}</a></dd></div>
         </dl>
       </div>
     </section>
