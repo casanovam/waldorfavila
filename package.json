@@ -1,0 +1,13 @@
+{
+  "name": "waldorf-avila",
+  "version": "1.0.0",
+  "description": "Sitio web bilingüe (es/en) del Jardín de Infancia Waldorf de Ávila",
+  "private": true,
+  "scripts": {
+    "build": "node build.js",
+    "start": "node build.js && node serve.js",
+    "test": "node --test"
+  },
+  "engines": { "node": ">=18" },
+  "license": "MIT"
+}
