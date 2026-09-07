@@ -3,7 +3,7 @@ module.exports = {
   otherLang: { code: 'en', label: 'EN', href: 'en/' },
   title: 'Jardín de Infancia Waldorf de Ávila',
   description:
-    'Jardín de infancia Waldorf en Ávila para niños y niñas de 18 meses a 5 años. Juego libre, naturaleza, arte y un ambiente cálido y hogareño.',
+    'Jardín de infancia Waldorf en Ávila (calle de la Encina, 25) para niños de 18 meses a 5 años. Juego libre, naturaleza y arte en un ambiente cálido y hogareño.',
   nav: {
     brand: 'Waldorf Ávila',
     items: [
@@ -14,7 +14,7 @@ module.exports = {
       ['#practico', 'Información práctica'],
       ['#contacto', 'Contacto'],
     ],
-    langLabel: 'Cambiar a inglés',
+    langLabel: 'English',
   },
   hero: {
     eyebrow: 'Jardín de infancia · Ávila',
@@ -23,7 +23,8 @@ module.exports = {
       'Un jardín de infancia Waldorf para niños y niñas de 18 meses a 5 años. Juego libre, materiales naturales, arte cada día y mucha naturaleza, en un ambiente cálido y hogareño.',
     cta: 'Ven a conocernos',
     cta2: 'Cómo educamos',
-    imgAlt: 'Rincón de juego con una carpa de seda roja, una cocinita de madera y una mesa con mantel rosa.',
+    imgAlt: 'Cuatro niños con ropa de abrigo cruzan el patio del jardín una mañana de invierno en Ávila.',
+    caption: 'El patio del jardín, una mañana de invierno',
     facts: [
       ['18 m – 5 años', 'edades'],
       ['8:15 – 14:00', 'horario, ampliable hasta las 15:00'],
@@ -49,8 +50,8 @@ module.exports = {
           'El juego libre es la actividad natural del niño y el centro del día. Los juguetes son sencillos, de madera y de tela, para que la imaginación ponga el resto. El adulto es el modelo que los niños imitan en sus gestos, su forma de hablar y de tratar a los demás.',
       },
       {
-        img: 'waldorf-1.jpg',
-        alt: 'Niños con ropa de abrigo caminando por el patio',
+        img: 'waldorf-2.jpg',
+        alt: 'Niños de distintas edades con pantalones impermeables saltando juntos en un charco',
         title: 'Un ambiente cálido y hogareño',
         text:
           'Niños de distintas edades conviven en un mismo grupo, como en una familia. Los mayores cuidan, los pequeños imitan, y el sentido social y de cooperación surge solo.',
@@ -70,8 +71,7 @@ module.exports = {
           'Huerto, tierra, charcos y estaciones. El contacto directo con la naturaleza regala a los niños un mundo de aprendizaje y salud, haga el tiempo que haga.',
       },
       {
-        img: 'waldorf-2.jpg',
-        alt: 'Niños con pantalones impermeables saltando en un charco',
+        img: null,
         title: 'Las familias, parte activa',
         text:
           'Las familias no son espectadoras: participan en la vida del jardín, en las fiestas de las estaciones, en las charlas pedagógicas y en los talleres.',
@@ -90,7 +90,13 @@ module.exports = {
       ['Cuento', 'Recogimiento', 'Un cuento contado, no leído, que se repite varios días para que los niños lo vivan por dentro.', 'in'],
       ['Despedida', 'Con las familias', 'Un verso de despedida y a casa, con tiempo para hablar con las maestras.', 'out'],
     ],
-    legend: ['expansión', 'recogimiento'],
+    legend: ['Expansión', 'Recogimiento'],
+  },
+  cta: {
+    afterCompare: '¿Quieres ver cómo es una mañana en el jardín?',
+    afterReviews: 'Ven a conocer el jardín y a Beatriz. Sin compromiso.',
+    primary: 'Ven a conocernos',
+    secondary: 'Escríbenos',
   },
   compare: {
     eyebrow: 'Waldorf frente a la escuela tradicional',
@@ -155,6 +161,10 @@ module.exports = {
     instagramLabel: '@waldorfavila',
     facebook: 'https://www.facebook.com/jardindeinfanciawaldorfavila/',
     facebookLabel: 'Jardín de Infancia Waldorf de Ávila',
+    emailBtn: 'Escríbenos un correo',
+    instagramBtn: 'Escríbenos por Instagram',
+    facebookBtn: 'Síguenos en Facebook',
+    mapTitle: 'Mapa: Jardín de Infancia Waldorf de Ávila, calle de la Encina 25',
     addressLabel: 'Dirección',
     address: { street: 'Calle de la Encina, 25, Chalet 19', postal: '05004', city: 'Ávila', region: 'Castilla y León', country: 'ES' },
     mapsUrl: 'https://maps.app.goo.gl/fnkuyWndEm6vduWF9',

@@ -22,7 +22,9 @@ content/en.js      texts in English
 build.js           plantilla HTML; genera index.html y en/index.html
 assets/styles.css  estilos (tema claro y oscuro, móvil)
 assets/site.js     menú móvil, acuarela del inicio
-assets/img/        fotografías del jardín
+assets/img/        fotografías (640/960/1280/1600, generadas desde assets/img/src)
+assets/fonts/      Fraunces y Alegreya Sans autoalojadas (sin peticiones a Google Fonts)
+tools/             process-images.py: recorte 4:3, gradado cálido, redimensionado y nitidez
 serve.js           servidor estático sin dependencias
 test/              comprobaciones con node:test
 sitemap.xml        generados por build.js
@@ -34,6 +36,19 @@ Para cambiar textos, edita `content/*.js` y ejecuta `npm run build`. La URL púb
 ```sh
 SITE_URL=https://www.tudominio.es/ npm run build
 ``` Los archivos HTML generados se versionan para que el sitio pueda publicarse tal cual (por ejemplo en GitHub Pages).
+
+## Fotografías
+
+Los originales viven en `assets/img/src/`. Para regenerar todas las medidas, el gradado y la imagen de compartir (`share.jpg`, 1200×630):
+
+```sh
+python3 -m venv .venv && .venv/bin/pip install pillow
+.venv/bin/python tools/process-images.py
+```
+
+## Rendimiento
+
+Lighthouse 12 en local (7 sept 2026): móvil 90 / 100 / 100 / 100, escritorio 100 / 100 / 100 / 100 (rendimiento, accesibilidad, buenas prácticas, SEO).
 
 ## Créditos
 

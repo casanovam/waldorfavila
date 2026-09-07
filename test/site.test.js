@@ -20,8 +20,9 @@ test('both languages are built with the right lang attribute', () => {
 test('pages link to each other and declare hreflang alternates', () => {
   assert.match(pages.es, /href="en\/" hreflang="en"/);
   assert.match(pages.en, /href="\.\.\/" hreflang="es"/);
-  assert.match(pages.es, /rel="alternate" hreflang="en"/);
-  assert.match(pages.en, /rel="alternate" hreflang="es"/);
+  assert.match(pages.es, /rel="alternate" hreflang="en" href="https:\/\/[^"]+\/en\/"/);
+  assert.match(pages.en, /rel="alternate" hreflang="es" href="https:\/\/[^"]+\/"/);
+  for (const html of Object.values(pages)) assert.doesNotMatch(html, /fonts\.googleapis\.com/, 'fonts must be self-hosted');
 });
 
 test('mobile viewport meta and collapsible nav are present', () => {
@@ -98,7 +99,6 @@ test('English content mirrors the Spanish structure completely', () => {
 test('SEO: canonical, Open Graph image, description and schema.org Preschool', () => {
   for (const [lang, html] of Object.entries(pages)) {
     assert.match(html, /<link rel="canonical" href="https:\/\/[^"]+">/);
-    assert.match(html, /<meta property="og:image" content="https:\/\/[^"]+waldorf-7-1200\.jpg">/);
     assert.match(html, /<meta name="description" content="[^"]{50,160}">/, `${lang}: description length`);
     const ld = html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s);
     assert.ok(ld, `${lang}: JSON-LD missing`);
@@ -111,12 +111,23 @@ test('SEO: canonical, Open Graph image, description and schema.org Preschool', (
   }
 });
 
+test('calls to action repeat after the comparison and after the reviews', () => {
+  for (const html of Object.values(pages)) {
+    assert.strictEqual((html.match(/class="cta-band/g) || []).length, 2);
+    assert.match(html, /class="contact-actions"[\s\S]*mailto:waldorfavila@gmail\.com/);
+    assert.match(html, /<iframe src="https:\/\/www\.google\.com\/maps\?q=40\.67[^"]*output=embed"[^>]*loading="lazy"/);
+  }
+});
+
 test('photos use srcset with resized files and lazy loading below the hero', () => {
   for (const html of Object.values(pages)) {
     const imgs = html.match(/<img [^>]*waldorf-\d[^>]*>/g);
-    assert.strictEqual(imgs.length, 6);
-    for (const tag of imgs) assert.match(tag, /srcset="[^"]*-480\.jpg 480w[^"]*-1200\.jpg 1200w[^"]*1536w"/);
+    assert.strictEqual(imgs.length, 5);
+    for (const tag of imgs) assert.match(tag, /srcset="[^"]*-640\.jpg 640w, [^"]*-960\.jpg 960w, [^"]*-1280\.jpg 1280w/);
+    assert.match(imgs[0], /waldorf-1-1600\.jpg 1600w/);
     assert.match(imgs[0], /fetchpriority="high"/);
-    assert.strictEqual(imgs.slice(1).filter((t) => /loading="lazy"/.test(t)).length, 5);
+    assert.strictEqual(imgs.slice(1).filter((t) => /loading="lazy"/.test(t)).length, 4);
+    assert.match(html, /<meta property="og:image" content="https:\/\/[^"]+share\.jpg">/);
+    assert.match(html, /<meta property="og:image:height" content="630">/);
   }
 });

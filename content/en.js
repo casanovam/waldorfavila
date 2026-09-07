@@ -3,7 +3,7 @@ module.exports = {
   otherLang: { code: 'es', label: 'ES', href: '../' },
   title: 'Waldorf Kindergarten of Ávila',
   description:
-    'A Waldorf kindergarten in Ávila, Spain, for children from 18 months to 5 years. Free play, nature, art and a warm, homely atmosphere.',
+    'Waldorf kindergarten in Ávila, Spain (Calle de la Encina 25) for children from 18 months to 5 years. Free play, nature and art in a warm, homely setting.',
   nav: {
     brand: 'Waldorf Ávila',
     items: [
@@ -14,7 +14,7 @@ module.exports = {
       ['#practico', 'Practical info'],
       ['#contacto', 'Contact'],
     ],
-    langLabel: 'Cambiar a español',
+    langLabel: 'Español',
   },
   hero: {
     eyebrow: 'Kindergarten · Ávila, Spain',
@@ -23,7 +23,8 @@ module.exports = {
       'A Waldorf kindergarten for children from 18 months to 5 years. Free play, natural materials, art every day and plenty of time outdoors, in a warm, homely atmosphere.',
     cta: 'Come and visit',
     cta2: 'How we teach',
-    imgAlt: 'Play corner with a red silk canopy, a wooden play kitchen and a table with a pink cloth.',
+    imgAlt: 'Four children in winter clothes cross the kindergarten yard on a winter morning in Ávila.',
+    caption: 'The kindergarten yard on a winter morning',
     facts: [
       ['18 m – 5 yrs', 'ages'],
       ['8:15 – 14:00', 'hours, optional extension to 15:00'],
@@ -49,8 +50,8 @@ module.exports = {
           'Free play is a child’s natural activity and the heart of the day. Toys are simple, made of wood and cloth, so imagination does the rest. The adult is the model children imitate in gesture, speech and the way they treat others.',
       },
       {
-        img: 'waldorf-1.jpg',
-        alt: 'Children in winter clothes walking across the yard',
+        img: 'waldorf-2.jpg',
+        alt: 'Children of different ages in waterproof trousers jumping in a puddle together',
         title: 'A warm, homely atmosphere',
         text:
           'Children of different ages share one group, as in a family. The older ones look after the younger, the younger imitate the older, and a sense of community and cooperation grows on its own.',
@@ -70,8 +71,7 @@ module.exports = {
           'Vegetable patch, soil, puddles and seasons. Direct contact with nature gives children a whole world of learning and health, whatever the weather.',
       },
       {
-        img: 'waldorf-2.jpg',
-        alt: 'Children in waterproof trousers jumping in a puddle',
+        img: null,
         title: 'Families as active partners',
         text:
           'Families are not spectators: they take part in the life of the kindergarten, in the seasonal festivals, in the talks on education and in the workshops.',
@@ -90,7 +90,13 @@ module.exports = {
       ['Story', 'Gathering in', 'A story told, not read, repeated over several days so the children can live it from the inside.', 'in'],
       ['Goodbye', 'With the families', 'A farewell verse and home, with time to talk to the teachers.', 'out'],
     ],
-    legend: ['expansion', 'gathering in'],
+    legend: ['Expansion', 'Gathering in'],
+  },
+  cta: {
+    afterCompare: 'Want to see what a morning at the kindergarten is like?',
+    afterReviews: 'Come and meet Beatriz and see the kindergarten. No obligation.',
+    primary: 'Come and visit',
+    secondary: 'Write to us',
   },
   compare: {
     eyebrow: 'Waldorf versus traditional preschool',
@@ -155,6 +161,10 @@ module.exports = {
     instagramLabel: '@waldorfavila',
     facebook: 'https://www.facebook.com/jardindeinfanciawaldorfavila/',
     facebookLabel: 'Jardín de Infancia Waldorf de Ávila',
+    emailBtn: 'Send us an email',
+    instagramBtn: 'Message us on Instagram',
+    facebookBtn: 'Follow us on Facebook',
+    mapTitle: 'Map: Waldorf Kindergarten of Ávila, Calle de la Encina 25',
     addressLabel: 'Address',
     address: { street: 'Calle de la Encina, 25, Chalet 19', postal: '05004', city: 'Ávila', region: 'Castilla y León', country: 'ES' },
     mapsUrl: 'https://maps.app.goo.gl/fnkuyWndEm6vduWF9',
