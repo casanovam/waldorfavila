@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = __dirname;
+const DIST = path.join(ROOT, 'dist');
 const SITE_URL = (process.env.SITE_URL || 'https://casanovam.github.io/waldorfavila/').replace(/\/?$/, '/');
 const MAPS_PLACE = 'https://www.google.com/maps/place/?q=place_id:0xd40f37bb921f0e5:0x4b9080d0b1f6c2f8';
 const GEO = { lat: 40.6721393, lng: -4.6794784 };
@@ -284,7 +285,17 @@ function render(t, base, alternates) {
 `;
 }
 
+function copyAssets() {
+  // Everything under assets/ except the full-size originals in assets/img/src
+  const from = path.join(ROOT, 'assets');
+  const to = path.join(DIST, 'assets');
+  fs.rmSync(DIST, { recursive: true, force: true });
+  fs.mkdirSync(to, { recursive: true });
+  fs.cpSync(from, to, { recursive: true, filter: (src) => !src.includes(path.join('img', 'src')) });
+}
+
 function build() {
+  copyAssets();
   const alternates = [
     { lang: 'es', href: './' },
     { lang: 'en', href: 'en/' },
@@ -293,7 +304,7 @@ function build() {
     const t = require(path.join(ROOT, 'content', `${l.file}.js`));
     const alts = alternates.map((a) => ({ ...a, href: l.base + a.href, abs: SITE_URL + (a.lang === 'es' ? '' : 'en/') }));
     const html = render(t, l.base, alts);
-    const out = path.join(ROOT, l.out);
+    const out = path.join(DIST, l.out);
     fs.mkdirSync(path.dirname(out), { recursive: true });
     fs.writeFileSync(out, html);
     console.log(`built ${l.out} (${html.length} bytes)`);
@@ -314,9 +325,10 @@ ${urls.map((u) => `  <url>
   </url>`).join('\n')}
 </urlset>
 `;
-  fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), sitemap);
-  fs.writeFileSync(path.join(ROOT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${SITE_URL}sitemap.xml\n`);
-  console.log('built sitemap.xml, robots.txt');
+  fs.writeFileSync(path.join(DIST, 'sitemap.xml'), sitemap);
+  fs.writeFileSync(path.join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${SITE_URL}sitemap.xml\n`);
+  fs.writeFileSync(path.join(DIST, '_headers'), `/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n`);
+  console.log('built sitemap.xml, robots.txt, _headers → dist/');
 }
 
 if (require.main === module) build();

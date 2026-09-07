@@ -3,7 +3,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const ROOT = __dirname;
+const ROOT = path.join(__dirname, 'dist');  // serve the built site
 const PORT = Number(process.env.PORT) || 5173;
 const MIME = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.jpg': 'image/jpeg', '.png': 'image/png', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.json': 'application/json' };
 
@@ -12,6 +12,7 @@ const server = http.createServer((req, res) => {
   if (urlPath.endsWith('/')) urlPath += 'index.html';
   const file = path.normalize(path.join(ROOT, urlPath));
   if (!file.startsWith(ROOT)) { res.writeHead(403); return res.end(); }
+  if (!fs.existsSync(ROOT)) { res.writeHead(500, { 'Content-Type': 'text/plain' }); return res.end('Run `npm run build` first'); }
   fs.stat(file, (err, st) => {
     if (!err && st.isDirectory()) { res.writeHead(301, { Location: urlPath + '/' }); return res.end(); }
     if (err) { res.writeHead(404, { 'Content-Type': 'text/plain' }); return res.end('Not found'); }

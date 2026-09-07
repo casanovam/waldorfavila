@@ -19,7 +19,7 @@ npm run build    # solo regenera index.html y en/index.html
 ```
 content/es.js      textos en español
 content/en.js      texts in English
-build.js           plantilla HTML; genera index.html y en/index.html
+build.js           plantilla HTML; genera dist/ (index.html, en/index.html, assets, sitemap)
 assets/styles.css  estilos (tema claro y oscuro, móvil)
 assets/site.js     menú móvil, acuarela del inicio
 assets/img/        fotografías (640/960/1280/1600, generadas desde assets/img/src)
@@ -27,15 +27,25 @@ assets/fonts/      Fraunces y Alegreya Sans autoalojadas (sin peticiones a Googl
 tools/             process-images.py: recorte 4:3, gradado cálido, redimensionado y nitidez
 serve.js           servidor estático sin dependencias
 test/              comprobaciones con node:test
-sitemap.xml        generados por build.js
-robots.txt
+dist/              salida del build (no se versiona)
+wrangler.jsonc     despliegue en Cloudflare (assets estáticos desde dist/)
 ```
 
 Para cambiar textos, edita `content/*.js` y ejecuta `npm run build`. La URL pública (canonical, Open Graph, sitemap y datos estructurados) se toma de la variable `SITE_URL`; por defecto es `https://casanovam.github.io/waldorfavila/`:
 
 ```sh
 SITE_URL=https://www.tudominio.es/ npm run build
-``` Los archivos HTML generados se versionan para que el sitio pueda publicarse tal cual (por ejemplo en GitHub Pages).
+``` La salida va a `dist/`, que es lo que se publica.
+
+## Despliegue en Cloudflare
+
+El proyecto se despliega como Worker con assets estáticos (`wrangler.jsonc`, directorio `dist/`).
+
+| Ajuste | Valor |
+|---|---|
+| Build command | `npm run build` |
+| Deploy command | `npx wrangler deploy` |
+| Variable `SITE_URL` | `https://<proyecto>.pages.dev/` hasta tener dominio; después la URL definitiva, con barra final |
 
 ## Fotografías
 

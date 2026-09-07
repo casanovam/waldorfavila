@@ -7,9 +7,10 @@ const { build } = require('../build');
 const ROOT = path.join(__dirname, '..');
 build();
 
+const DIST = path.join(ROOT, 'dist');
 const pages = {
-  es: fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8'),
-  en: fs.readFileSync(path.join(ROOT, 'en', 'index.html'), 'utf8'),
+  es: fs.readFileSync(path.join(DIST, 'index.html'), 'utf8'),
+  en: fs.readFileSync(path.join(DIST, 'en', 'index.html'), 'utf8'),
 };
 
 test('both languages are built with the right lang attribute', () => {
@@ -42,11 +43,16 @@ test('key content is present in each language', () => {
 
 test('every referenced local asset exists', () => {
   for (const [lang, html] of Object.entries(pages)) {
-    const dir = lang === 'es' ? ROOT : path.join(ROOT, 'en');
+    const dir = lang === 'es' ? DIST : path.join(DIST, 'en');
     const refs = [...html.matchAll(/(?:src|href)="((?:\.\.\/)?assets\/[^"]+)"/g)].map((m) => m[1]);
     assert.ok(refs.length > 5, `expected asset references in ${lang}`);
     for (const ref of refs) assert.ok(fs.existsSync(path.join(dir, ref)), `${lang}: missing ${ref}`);
   }
+});
+
+test('dist contains sitemap, robots and headers but not the photo originals', () => {
+  for (const f of ['sitemap.xml', 'robots.txt', '_headers', 'assets/styles.css', 'assets/fonts.css']) assert.ok(fs.existsSync(path.join(DIST, f)), f);
+  assert.ok(!fs.existsSync(path.join(DIST, 'assets', 'img', 'src')), 'originals must not ship');
 });
 
 test('local server serves both pages', async () => {
